@@ -162,11 +162,7 @@
     animation: imgRotate 50s linear infinite;
 }
 
-@keyframes imgRotate { 
-    100% { 
-        transform: rotate(360deg); 
-    } 
-}
+
 
 .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, .5);
@@ -359,4 +355,7 @@
     padding-right: 0;
     border-right: none;
 }
+
+
+
 

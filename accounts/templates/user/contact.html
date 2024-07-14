@@ -3,9 +3,119 @@
 
 {% block body %}
 <!-- Template Stylesheet -->
-<link href="{% static 'static_file/css/style.css'%}" rel="stylesheet">
+<link href="{% static 'static_file/css/about.css'%}" rel="stylesheet">
 
 
-<h1>Contact Us</h1>
+
+
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <h1 class="text-primary m-0"><img src="{% static 'static_file/img/logo.png'%}" alt=""></h1>
+            <!-- <img src="img/logo.png" alt="Logo"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 pe-4">
+                <a href="{% url 'accounts:track'%}" class="nav-item nav-link ">Track</a>
+                <a href="{% url 'accounts:my_shipment'%}" class="nav-item nav-link ">My shipments</a>
+                <a href="{% url 'accounts:app'%}" class="nav-item nav-link ">Home</a>
+                <a href="{% url 'accounts:about' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'accounts:contact' %}" class="nav-item nav-link active">contact us</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Language</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/index.html" class="dropdown-item">English</a>
+                        <a href="ar.eg.html" class="dropdown-item">Arapic</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-nav  d-flex gap-3">
+                {% if user.is_authenticated  %}
+                <div>
+                    <a href="{% url 'accounts:new_shipment' %}" class="btn btn-primary py-2 px-4">New Shipment</a>
+                </div>
+                <div>
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-primary py-2 px-4">Profile</a>
+                </div>
+                {% if user.is_superuser  %}
+                <div>
+                    <a href="{% url 'accounts:dashboard' %}" class="btn btn-primary py-2 px-4">Dashboard</a>
+                </div>
+                {% endif %}
+                <div>
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-primary py-2 px-4">Log Out</a>
+                </div>
+                {% else %}
+                <div>
+                    <a href="{% url 'accounts:sign_up' %}" class="btn btn-primary py-2 px-4">Sign Up</a>
+                </div>
+                <div>
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary py-2 px-4">Log In</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="padding-top:100px;">
+    <div class="col-md-12">
+        <h1>Contact Us</h1>
+        <p>Get in touch with us for any questions or concerns.</p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+        <h2>Phone</h2>
+        <p>+1-800-123-4567</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Email</h2>
+        <p><a href="mailto:info@example.com">info@example.com</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Address</h2>
+        <p>123 Main St, Anytown, CA 12345</p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+        <h2>Reach Out to Us</h2>
+        <p>We'd love to hear from you! Whether you have a question, comment, or just want to say hello, please don't hesitate to get in touch. Our team is dedicated to providing you with the best possible experience, and we're always happy to help.</p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;">Send</button>
+        </form>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+        <h2>Follow Us</h2>
+        <p>Stay up-to-date with the latest news and updates from OnTrack.</p>
+        <ul class="list-inline">
+            <li><a href="http://facebook.com/ontrack" target="_blank"><i class="fab fa-facebook-f"></i> facebook</a></li>
+            <li><a href="http://twitter.com/ontrack" target="_blank"><i class="fab fa-twitter"></i> twitter</a></li>
+            <li><a href="http://linkedin.com/company/ontrack" target="_blank"><i class="fab fa-linkedin-in"></i> Lin</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
 
 {% endblock body %}

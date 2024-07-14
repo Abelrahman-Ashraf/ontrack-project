@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse " id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0 pe-4">
                 <a href="{% url 'accounts:track'%}" class="nav-item nav-link ">Track</a>
-                <a href="{% url 'accounts:my_shipment'%}" class="nav-item nav-link ">My shipments</a>
+                <a href="{% url 'accounts:my_shipment'%}" class="nav-item nav-link active">My shipments</a>
                 <a href="{% url 'accounts:app'%}" class="nav-item nav-link ">Home</a>
                 <a href="{% url 'accounts:about' %}" class="nav-item nav-link">About</a>
                 <a href="{% url 'accounts:contact' %}" class="nav-item nav-link">contact us</a>
@@ -60,7 +60,9 @@
 </div>
 
 
-<h1 style="padding-top:100px;">Shipments</h1>
+
+<h1 style="padding-top:100px;"> My Shipments</h1>
+
 
 <div style="overflow-y: auto;">
     <table class="table table-striped table-bordered">
@@ -100,4 +102,9 @@
 </div>
 
 
-{% endblock body %}
+
+
+
+
+{% endblock %}
+

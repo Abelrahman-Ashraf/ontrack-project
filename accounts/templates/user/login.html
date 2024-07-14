@@ -10,18 +10,21 @@
         <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
             <h5 class="section-title ff-secondary text-start text-primary fw-normal">OnTrack</h5>
             <h1 class="text-white mb-4">Enter your data</h1>
-            <form>
+            <form method="POST" name="Login_Form">
+                {% csrf_token %}
                 <div class="row g-3">
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="email" class="form-control w-100" id="email" placeholder="Your Email">
-                            <label for="email">Your Email</label>
+                            {% comment %} <input type="text" class="form-control w-100" id="username" placeholder="User Name"> {% endcomment %}
+                            {{form.username}}
+                            <label>User Name</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="password" class="form-control w-100" id="password" placeholder="Your Password">
-                            <label for="email">Your Password</label>
+                            {% comment %} <input type="password" class="form-control w-100" id="password" placeholder="Your Password"> {% endcomment %}
+                            {{form.password}}
+                            <label>Your Password</label>
                         </div>
                     </div>
                     <div class="col-12">
@@ -29,6 +32,11 @@
                     </div>
                 </div>
             </form>
+            <br>
+            <div>
+                <a href="{% url 'accounts:sign_up' %}" class="btn btn-primary w-100 py-3 px-4">Create New Account</a>
+            </div>
+            
         </div>
     </div>
 </div>

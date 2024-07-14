@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+{% block body %}
+<!-- Template Stylesheet -->
+<link href="{% static 'static_file/css/style.css'%}" rel="stylesheet">
+
+<div class=" container mt-sm-5">
+    <div class="col-xl-6 bg-dark  align-items-center m-auto">
+        <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+            <h5 class="section-title ff-secondary text-start text-primary fw-normal">OnTrack</h5>
+            <h1 class="text-white mb-4">Create new shipment</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {% comment %} <input type="text" class="form-control" id="shipment_type" placeholder="shipment type" name="shipment_type"> {% endcomment %}
+                            {{form.shipment_type}}
+                            <label for="shipment_type">shipment type</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.shipment_weight}}
+                            {% comment %} <input type="text" class="form-control" id="shipment_wieght" placeholder="shipment_wieght" name="shipment_wieght"> {% endcomment %}
+                            <label for="shipment_wieght">shipment wieght</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.sender_name}}
+                            {% comment %} <input type="text" class="form-control" id="shipment_wieght" placeholder="shipment_wieght" name="shipment_wieght"> {% endcomment %}
+                            <label for="sender_name">sender name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.receiver_name}}
+                            {% comment %} <input type="text" class="form-control" id="name" placeholder="Your Name" name="shipment_type"> {% endcomment %}
+                            <label for="receiver_name">receiver name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.sender_phone}}
+                            {% comment %} <input type="text" class="form-control" id="name" placeholder="Your Name" name="shipment_type"> {% endcomment %}
+                            <label for="sender_phone">sender phone</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.receiver_phone}}
+                            {% comment %} <input type="text" class="form-control" id="name" placeholder="Your Name" name="shipment_type"> {% endcomment %}
+                            <label for="receiver_phone">receiver phone</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.start_location}}
+                            {% comment %} <input type="text" class="form-control" id="name" placeholder="Your Name" name="shipment_type"> {% endcomment %}
+                            <label for="start_location">start location</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.last_location}}
+                            {% comment %} <input type="text" class="form-control" id="name" placeholder="Your Name" name="shipment_type"> {% endcomment %}
+                            <label for="last_location">last location</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.received_date}}
+                            {% comment %} <input type="Date" class="form-control datetimepicker-input" id="datetime" name="shipment_type" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" / > {% endcomment %}
+                            <label for="received">received date</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            {{form.about_shipment}}
+                            {% comment %} <textarea class="form-control" placeholder="Special Request" id="message" name="shipment_type" style="height: 100px"></textarea> {% endcomment %}
+                            <label for="about_shipment">about shipment</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3" type="submit" value="save">Send Your shipment</button>
+                    </div>
+                    <div class="col-12  " >
+                        <a href="{% url 'accounts:app' %}" class="btn btn-primary w-100 py-3">Back to Home</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

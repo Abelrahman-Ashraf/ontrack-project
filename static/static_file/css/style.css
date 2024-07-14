@@ -83,13 +83,15 @@
 }
 
 .btn-chat{
+    margin-top:10px;
     position: fixed;
-    display: none;
+    display: flex;
     bottom: 45px;
     z-index: 99;
     left: 45px;
-    border-radius: 50%;
-    font-family: 'Courier New', Courier, monospace;
+    width:auto;
+    padding:10px;
+    border-radius: 50px;
 }
 
 

@@ -19,6 +19,7 @@
             <div class="collapse navbar-collapse " id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 pe-4">
                     <a href="{% url 'accounts:track'%}" class="nav-item nav-link ">Track</a>
+                    <a href="{% url 'accounts:my_shipment'%}" class="nav-item nav-link ">My shipments</a>
                     <a href="{% url 'accounts:app'%}" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'accounts:about' %}" class="nav-item nav-link">About</a>
                     <a href="{% url 'accounts:contact' %}" class="nav-item nav-link">contact us</a>
@@ -31,18 +32,29 @@
                     </div>
                 </div>
                 <div class="navbar-nav  d-flex gap-3">
+                    {% if user.is_authenticated  %}
+                    <div>
+                        <a href="{% url 'accounts:new_shipment' %}" class="btn btn-primary py-2 px-4">New Shipment</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'accounts:profile' %}" class="btn btn-primary py-2 px-4">Profile</a>
+                    </div>
+                    {% if user.is_superuser  %}
+                    <div>
+                        <a href="{% url 'accounts:dashboard' %}" class="btn btn-primary py-2 px-4">Dashboard</a>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <a href="{% url 'accounts:logout' %}" class="btn btn-primary py-2 px-4">Log Out</a>
+                    </div>
+                    {% else %}
                     <div>
                         <a href="{% url 'accounts:sign_up' %}" class="btn btn-primary py-2 px-4">Sign Up</a>
                     </div>
                     <div>
                         <a href="{% url 'accounts:login' %}" class="btn btn-primary py-2 px-4">Log In</a>
                     </div>
-                    <div>
-                        <a href="{% url 'accounts:profile' %}" class="btn btn-primary py-2 px-4">Profile</a>
-                    </div>
-                    <div>
-                        <a href="{% url 'accounts:dashboard' %}" class="btn btn-primary py-2 px-4">Dashboard</a>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -51,20 +63,17 @@
             <div class="container-xxl my-5 py-5">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-5 text-center text-lg-start">
-                        <h1 class="display-3 text-white animated slideInLeft">Welcome<br>To Our Website</h1>
+                        <h1 class="display-3 text-white animated slideInLeft">Welcome<br>To Our Website  {% if user.is_authenticated  %}{{user.profile.name}} {% endif %}</h1>
+                        
                         <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        {% if user.is_authenticated  %}
+                        {% comment %} <a style="" href="{% url 'accounts:chatbot' %}" class="btn btn-lg btn-primary btn-lg-square btn-chat"><i class="bi bi-discord"></i>&nbsp chat bot</a>  {% endcomment %}
+                        {% else %}
                         <a href="{% url 'accounts:login' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Log In</a>
-                        <a style="
-                        margin-top:10px;
-                        position: fixed;
-                        display: flex;
-                        bottom: 45px;
-                        z-index: 99;
-                        left: 45px;
-                        width:auto;
-                        padding:10px;
-                        border-radius: 50px;
-                        " href="{% url 'accounts:chatbot' %}" class="btn btn-lg btn-primary btn-lg-square btn-chat"><i class="bi bi-discord"></i>&nbsp chat bot</a> 
+                        {% endif %}
+                        <!-- chat bot -->
+                        
+                        <!-- end chat bot -->
                     </div>
                     <div class="col-lg-7 text-center text-lg-end ">
                         <img class="img-fluid img-app" src="{% static 'static_file/img/delivery.png'%}" alt="">
